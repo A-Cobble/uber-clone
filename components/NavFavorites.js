@@ -8,13 +8,13 @@ const data = [
     id:"123",
     icon: "home",
     location: "Home",
-    destination: "Code Street, London, UK",
+    destination: "321 Your st, City, State",
   },
   {
     id:"456",
     icon: "briefcase",
     location: "Work",
-    destination: "London Eye, London, UK",
+    destination: "789 Word rd, City, State",
   },
 ];
 
@@ -23,6 +23,11 @@ const NavFavorites = () => {
     <FlatList 
       data={data}
       keyExtractor={(item) => item.id}
+      ItemSeparatorComponent={() => {
+        <View 
+          style={[tw`bg-gray-200`, { height: 0.5 }]}
+        />
+      }}
       renderItem={({ item: { location, destination, icon } }) => (
         <TouchableOpacity style={tw`flex-row items-center p-5`}>
           <Icon
@@ -33,8 +38,8 @@ const NavFavorites = () => {
             size={18}
           />
         <View>
-          <Text>{location}</Text>
-          <Text>{destination}</Text>
+          <Text style={tw`font-semibold text-lg`}>{location}</Text>
+          <Text style={tw`text-gray-500`}>{destination}</Text>
         </View>
         </TouchableOpacity>
       )}/> 
